@@ -1,3 +1,9 @@
+#build folder
+build/
+cmake-build-debug/
+#idea setting
+.vscode 
+.idea
 # Prerequisites
 *.d
 
