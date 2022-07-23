@@ -1,7 +1,24 @@
 #include <string>
+#include <boost/asio.hpp>
+
+using namespace boost::asio;
 using namespace std;
 #ifndef SCAN_H
 #define SCAN_H
+
+
+/**
+ * Usage:
+* This utility generates the ip addresses in the given network address range for scan purposes
+*
+* arguments
+* network_range string     The IPv6 CIDR range to scan.
+
+*/
+
+ip::address_v6_range generate_ip_addresses(string network_range);
+
+
 
 /**
  * Usage:
