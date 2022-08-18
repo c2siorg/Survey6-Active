@@ -12,4 +12,4 @@ project( survey6_active )
 include_directories( ./include ./src  )
 
 # target
-add_executable( active_probe ./src/main.cpp ./src/scan.cpp )
+add_executable( active_probe ./src/main.cpp ./src/scan.cpp include/survery6_active/ping.h src/ping.cpp)

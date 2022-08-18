@@ -1,5 +1,6 @@
 #include <iostream>
 #include <survery6_active/scan.h>
+#include <survery6_active/ping.h>
 
 ip::address_v6_range generate_ip_addresses(string network_range){
     boost::system::error_code error_code;
@@ -13,8 +14,7 @@ ip::address_v6_range generate_ip_addresses(string network_range){
     return hosts;
 }
 
-// TODO:
-// scans for them
+// TODO (optimizations:
 // tests the network ranges where live addresses are found for aliased conditions
 // add legitimate discovered IPv6 addresses to an output list
 void scan(string network)
@@ -23,7 +23,8 @@ void scan(string network)
     ip::address_v6_range hosts= generate_ip_addresses(network);
     for (auto addrs: hosts){
         string ip6 = addrs.to_string();
-        cout << ip6 <<endl;
+        bool success= ping(ip6);
+        cout << ip6<<" "<<(success?"reachable":"unreachable") <<endl;
     }
     cout << "Scan completed" << endl;
 
