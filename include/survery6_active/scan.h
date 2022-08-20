@@ -1,8 +1,12 @@
 #include <string>
 #include <boost/asio.hpp>
+#include <fstream>
+#include <iostream>
 
 using namespace boost::asio;
 using namespace std;
+
+
 #ifndef SCAN_H
 #define SCAN_H
 
@@ -29,8 +33,9 @@ ip::address_v6_range generate_ip_addresses(string network_range);
 *
 * arguments
 * network string     The IPv6 CIDR range to scan.
+* output_path string       The path to save the responses in json format
 
 */
-void scan(string network);
+void scan(string network, string output_path);
 
 #endif
