@@ -4,6 +4,7 @@
 #include <future>
 
 
+
 ip::address_v6_range generate_ip_addresses(string network_range){
     boost::system::error_code error_code;
     ip::network_v6 subnet = ip::make_network_v6(network_range,error_code);
@@ -39,8 +40,8 @@ void scan(string network, string output_path)
     for(auto addres:hosts){
         ip_list.push_back(addres.to_string());
     }
+    cout<<"No of ip addresses in the network range : "<<ip_list.size()<<endl;
 
-    cout<<endl;
     const auto max_threads = thread::hardware_concurrency()*2;
     const int ips_per_thread = ip_list.size()/max_threads;
     vector<future<vector<pair<string,string>>>> futures;
@@ -68,12 +69,12 @@ else{
 
     for( auto vec : result_vec){
         for( pair<string,string> result_pair: vec){
-            cout << result_pair.first << ", "<<result_pair.second<<"\n";
+            cout << result_pair.first << " "<<(result_pair.second=="reachable"?"\033[0;32m reachable":"\033[0;31m unreachable")<<"\033[0m\n";
             results << result_pair.first << ", "<<result_pair.second<<"\n";
         }
     }
 
     results.close();
-    cout << "Scan completed" << endl;
+    cout << "\033[0;32mScan completed" << endl;
 
 }
