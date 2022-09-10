@@ -11,4 +11,4 @@ include_directories( ${Boost_INCLUDE_DIR} ./include ./src  )
 # target
 add_executable( active_probe ./src/main.cpp ./src/scan.cpp include/survery6_active/ping.h src/ping.cpp)
 target_link_libraries( active_probe LINK_PUBLIC  ${Boost_LIBRARIES} )
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")

@@ -2,6 +2,7 @@
 #include <boost/asio.hpp>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 using namespace boost::asio;
 using namespace std;
@@ -21,6 +22,18 @@ using namespace std;
 */
 
 ip::address_v6_range generate_ip_addresses(string network_range);
+
+
+
+/**
+ * Usage:
+* This utility scans for live hosts over IPv6 ip list. The output contains the ip address and the reachability as a pari
+*
+* arguments
+* ip_list vector<string>      The list of IPV6 ips to be scanned.
+
+*/
+vector<pair<string,string>> scan_ip_list(vector<string> ip_list);
 
 
 
